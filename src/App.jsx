@@ -8,19 +8,20 @@ import Products from "./pages/Products/Products"
 import ProductDetails from "./pages/ProductDetails/ProductDetails"
 import Cart from "./pages/Cart/Cart"
 import WishList from "./pages/WishList/WishList"
+import ProtectRoutes from "./components/ProtectRoutes/ProtectRoutes"
 
 function App() {
 
   const router = createBrowserRouter([
     {
       path: "/", element: <Layout />, children: [
-        { index: true, element: <Home /> },
+        { index: true, element: <ProtectRoutes><Home /></ProtectRoutes> },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
-        { path: "products", element: <Products /> },
-        { path: "productDetails/:id", element: <ProductDetails /> },
-        { path: "wishList", element: <WishList /> },
-        { path: "Cart", element: <Cart /> },
+        { path: "products", element: <ProtectRoutes><Products /></ProtectRoutes> },
+        { path: "productDetails/:id", element: <ProtectRoutes><ProductDetails /></ProtectRoutes> },
+        { path: "wishList", element: <ProtectRoutes><WishList /></ProtectRoutes> },
+        { path: "Cart", element: <ProtectRoutes><Cart /></ProtectRoutes> },
         // { path: "/*", element: <NotFound /> },
       ]
     }

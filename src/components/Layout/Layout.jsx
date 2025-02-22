@@ -1,16 +1,18 @@
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 
 export default function Layout() {
+
+    const location = useLocation();
+    const hideNavbarAndFooter = location.pathname === "/register" || location.pathname === "/login";
     return (
         <>
-            <Navbar /> 
+            {!hideNavbarAndFooter && <Navbar />}
             <div className='min-h-[80vh]'>
                 <Outlet />
             </div>
-            <Footer /> 
-            {/* <Footer /> */}
+            {!hideNavbarAndFooter && <Footer />}
         </>
     )
 }
