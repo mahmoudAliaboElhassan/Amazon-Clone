@@ -7,6 +7,7 @@ import App from './App.jsx'
 import '@fontsource/ibm-plex-sans-condensed';
 import '@fontsource/inika';
 import '@fontsource-variable/noto-serif-gujarati';
+import '@fontsource/lato';
 import { Provider } from 'react-redux'
 import store from './Store/store'
 // end fonts 
