@@ -6,10 +6,14 @@ import App from './App.jsx'
 // start fonts 
 import '@fontsource/ibm-plex-sans-condensed';
 import '@fontsource/inika';
+import { Provider } from 'react-redux'
+import store from './Store/store'
 // end fonts 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <Provider store={store}>
     <App />
+    </Provider>
   </StrictMode>,
 )

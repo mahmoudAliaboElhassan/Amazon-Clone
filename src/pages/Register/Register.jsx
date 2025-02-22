@@ -3,8 +3,14 @@ import amazon from "../../assets/images/Group 1.png"
 import { useFormik } from 'formik'
 import axios from "axios"
 import { object, ref, string } from "yup";
+import { useDispatch } from "react-redux";
+import { RegisterAction } from "../../Network/AuthApi";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const phoneRegex = /^(\+2)?01[0125][0-9]{8}$/g;
     const password = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/
@@ -17,30 +23,34 @@ export default function Register() {
     })
 
     async function sendDataToRegister(values) {
-        const loadingId = toast.loading("Waiting....")
-        try {
-            const options = {
-                url: "https://ecommerce.routemisr.com/api/v1/auth/signup",
-                method: "POST",
-                data: values
-            }
-            const { data } = await axios.request(options)
-            if (data.message == "success") {
-                localStorage.setItem("userToken", data.token)
-                // setUserLogin(data.token)
-                toast.success("User created successfully")
-                // setTimeout(() => {
-                //     navigate("/login")
-                // }, 2000)
-                console.log(data);
+        // const loadingId = toast.loading("Waiting....")
+        // try {
+        //     const options = {
+        //         url: "https://ecommerce.routemisr.com/api/v1/auth/signup",
+        //         method: "POST",
+        //         data: values
+        //     }
+        //     const { data } = await axios.request(options)
+        //     if (data.message == "success") {
+        //         localStorage.setItem("userToken", data.token)
+        //         // setUserLogin(data.token)
+        //         toast.success("User created successfully")
+        //         // setTimeout(() => {
+        //         //     navigate("/login")
+        //         // }, 2000)
+        //         console.log(data);
                 
-            }
-        } catch (error) {
-            toast.error(error.response.data.message)
-        }
-        finally {
-            toast.dismiss(loadingId)
-        }
+        //     }
+        // } catch (error) {
+        //     toast.error(error.response.data.message)
+        // }
+        // finally {
+        //     toast.dismiss(loadingId)
+        // }
+        dispatch(RegisterAction(values)).then(res=>{
+            console.log(res);
+            navigate('/login')
+        })
 
     }
 
