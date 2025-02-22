@@ -1,5 +1,7 @@
 import toast from "react-hot-toast"
 import amazon from "../../assets/images/Group 1.png"
+import devider from "../../assets/images/devider.png"
+import devider2 from "../../assets/images/devider 2.png"
 import { useFormik } from 'formik'
 import axios from "axios"
 import { object, ref, string } from "yup";
@@ -39,7 +41,7 @@ export default function Register() {
         //         //     navigate("/login")
         //         // }, 2000)
         //         console.log(data);
-                
+
         //     }
         // } catch (error) {
         //     toast.error(error.response.data.message)
@@ -47,9 +49,16 @@ export default function Register() {
         // finally {
         //     toast.dismiss(loadingId)
         // }
-        dispatch(RegisterAction(values)).then(res=>{
-            console.log(res);
-            navigate('/login')
+        dispatch(RegisterAction(values)).then(res => {
+            // console.log(res);
+            if (res?.payload?.message == "success") {
+                // localStorage.setItem("userToken", res?.payload?.token)
+                toast.success("User created successfully")
+                navigate('/login')
+            }
+            else if (res?.error?.message == "Rejected") {
+                toast.error(res?.payload)
+            }
         })
 
     }
@@ -65,45 +74,61 @@ export default function Register() {
         validationSchema,
         onSubmit: sendDataToRegister
     })
-    
+
 
     return (
         <>
-            <section>
-                <div className="container flex flex-col items-center">
+            <section className="py-[50px]">
+                <div className="container px-[20px] sm:px-[0px] flex flex-col items-center">
                     <img src={amazon} className="mb-[30px] w-[150px]" alt="" />
                     <div className="card max-w-[587px] w-full py-[51px] px-[37px] border-[.2px] border-solid border-[#d5d9d9] rounded-[8px] font-ibm ">
                         <h3 className='font-[500] text-[28px] '>Create Account</h3>
                         <form onSubmit={formik.handleSubmit} className='flex flex-col gap-2'>
                             <div className='flex flex-col'>
                                 <label htmlFor="name" className='font-[600] text-[14px] mb-2'>Your name</label>
-                                <input type="text" value={formik.values.name} name='name' onBlur={formik.handleBlur} onChange={formik.handleChange}  id='name' className='w-full border-[1px] border-solid border-[#888c8c] px-[7px] py-[3px]  rounded-[8px]'/>
+                                <input type="text" value={formik.values.name} name='name' onBlur={formik.handleBlur} onChange={formik.handleChange} id='name' className='w-full border-[1px] border-solid border-[#888c8c] px-[7px] py-[3px]  rounded-[8px]' />
                                 {formik.errors.name && formik.touched.name ? (<p className="text-red-500 text-sm mt-1">*{formik.errors.name}</p>) : ""}
                             </div>
                             <div className='flex flex-col'>
                                 <label htmlFor="email" className='font-[600] text-[14px] mb-2'>Your email</label>
-                                <input type="email" value={formik.values.email} name='email' onBlur={formik.handleBlur} onChange={formik.handleChange}  id='email' className='w-full border-[1px] border-solid border-[#888c8c] px-[7px] py-[3px] rounded-[8px]'/>
+                                <input type="email" value={formik.values.email} name='email' onBlur={formik.handleBlur} onChange={formik.handleChange} id='email' className='w-full border-[1px] border-solid border-[#888c8c] px-[7px] py-[3px] rounded-[8px]' />
                                 {formik.errors.email && formik.touched.email ? (<p className="text-red-500 text-sm mt-1">*{formik.errors.email}</p>) : ""}
                             </div>
                             <div className='flex flex-col'>
                                 <label htmlFor="phone" className='font-[600] text-[14px] mb-2'>Mobile number</label>
-                                <input type="tel" value={formik.values.phone} name='phone' onBlur={formik.handleBlur} onChange={formik.handleChange}  id='phone' className='w-full border-[1px] border-solid border-[#888c8c] px-[7px] py-[3px] rounded-[8px]'/>
+                                <input type="tel" value={formik.values.phone} name='phone' onBlur={formik.handleBlur} onChange={formik.handleChange} id='phone' className='w-full border-[1px] border-solid border-[#888c8c] px-[7px] py-[3px] rounded-[8px]' />
                                 {formik.errors.phone && formik.touched.phone ? (<p className="text-red-500 text-sm mt-1">*{formik.errors.phone}</p>) : ""}
                             </div>
                             <div className='flex flex-col'>
                                 <label htmlFor="password" className='font-[600] text-[14px] mb-2'>Password</label>
-                                <input type="password" value={formik.values.password} name='password' onBlur={formik.handleBlur} onChange={formik.handleChange}  id='password' className='w-full border-[1px] border-solid border-[#888c8c] px-[7px] py-[3px] rounded-[8px]'/>
+                                <input type="password" value={formik.values.password} name='password' onBlur={formik.handleBlur} onChange={formik.handleChange} id='password' className='w-full border-[1px] border-solid border-[#888c8c] px-[7px] py-[3px] rounded-[8px]' />
                                 {formik.errors.password && formik.touched.password ? (<p className="text-red-500 text-sm mt-1">*{formik.errors.password}</p>) : ""}
                             </div>
                             <div className='flex flex-col'>
                                 <label htmlFor="rePassword" className='font-[600] text-[14px] mb-2'>Confirm Password</label>
-                                <input type="password" value={formik.values.rePassword} name='rePassword' onBlur={formik.handleBlur} onChange={formik.handleChange}  id='rePassword' className='w-full border-[1px] border-solid border-[#888c8c] px-[7px] py-[3px] rounded-[8px]'/>
+                                <input type="password" value={formik.values.rePassword} name='rePassword' onBlur={formik.handleBlur} onChange={formik.handleChange} id='rePassword' className='w-full border-[1px] border-solid border-[#888c8c] px-[7px] py-[3px] rounded-[8px]' />
                                 {formik.errors.rePassword && formik.touched.rePassword ? (<p className="text-red-500 text-sm mt-1">*{formik.errors.rePassword}</p>) : ""}
                             </div>
                             <button type="submit" className="w-full bg-[#FFD814] hover:bg-[#ebc400] py-[9px] mt-3 rounded-[10px]">Submit</button>
-                            <div className="w-full h-[1px] bg-[#D9D9D9] mt-3"></div>
                         </form>
+                        <div className="w-full h-[1px] bg-[#D9D9D9] mt-3"></div>
+                        <div className="py-[20px]">
+                            <h5 className="font-[600] text-[24px]">Buying for work?</h5>
+                            <span className="font-inika text-[#2A8FD7] cursor-pointer">Create a free business account</span>
+                        </div>
+                        <img src={devider} className="w-full mb-[20px]" alt="" />
+                        <span className="font-inika flex flex-col sm:flex-row gap-2 mb-[20px]">Already have an account? <a className="text-blueLinks flex items-center cursor-pointer" onClick={()=>{navigate("/login")}}>Sign in <i className="fa-solid fa-caret-right"></i></a></span>
+                        <p>By creating an account or logging in , you agree to Amazon’s <span className="underline text-blueLinks cursor-pointer">Conditions of Use</span> and <span className="underline text-blueLinks cursor-pointer">Privacy Notice.</span></p>
                     </div>
+                </div>
+                <img src={devider2} className="w-full my-[50px]" alt="devider image" />
+                <div className="container flex flex-col items-center px-[20px] sm:px-[0px]">
+                    <div className="flex justify-center gap-[20px]">
+                        <span className="text-blueLinks font-inika cursor-pointer">Conditions of Use</span>
+                        <span className="text-blueLinks font-inika cursor-pointer">Privacy Notice</span>
+                        <span className="text-blueLinks font-inika cursor-pointer">Help</span>
+                    </div>
+                    <p className="font-[300]">© 1996-2024, Amazon.com, Inc. or its affiliates</p>
                 </div>
             </section>
         </>
