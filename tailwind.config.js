@@ -1,3 +1,5 @@
+import daisyui from 'daisyui';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -20,8 +22,9 @@ export default {
       'ibm': ['IBM Plex Sans Condensed', 'sans-serif'],
       'inika': ['Inika', 'serif'],
       'noto': ['Noto Serif Gujarati Variable', 'serif'],
+      'lato': ['Lato', 'sans-serif'],
     }
   },
-  plugins: [],
+  plugins: [daisyui],
 }
 

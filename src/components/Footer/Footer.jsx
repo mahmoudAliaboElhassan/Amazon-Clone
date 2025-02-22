@@ -63,7 +63,7 @@ export default function Footer() {
                         <div className="flex gap-3 justify-self-center sm:justify-self-start">
                             <div className="flex items-center border border-solid border-[#B4B4B4] text-[#B4B4B4] rounded-[3px] p-[10px] gap-[10px] w-fit">
                                 <i className="fa-solid fa-globe"></i>
-                                <select name="" id="" className="bg-transparent ">
+                                <select name="" id="" className="bg-transparent cursor-pointer">
                                     <option value="" className="text-black"> English</option>
                                     <option value="" className="text-black"> Aribic</option>
                                     <option value="" className="text-black"> German</option>
