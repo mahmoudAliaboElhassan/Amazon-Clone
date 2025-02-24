@@ -54,7 +54,7 @@ const Product = ({ product }) => {
         </p>
         <button
           onClick={() => addToCart()}
-          className="w-[99px] h-[28px] bg-[#FFCC00] text-[11.89px] font-[300] mt-2 mb-6 rounded-[19.81px] cursor-pointer "
+          className="w-[99px] h-[28px] bg-[#FFCC00] hover:bg-[#ebc400] text-[11.89px] font-[300] mt-2 mb-6 rounded-[19.81px] cursor-pointer "
         >
           Add to cart
         </button>
