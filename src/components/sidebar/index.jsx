@@ -12,7 +12,7 @@ function Sidebar() {
             className="mx-1"
             name="get-in-2-day"
           />
-          <label for="2-days">Get it in 2 Days</label>
+          <label htmlFor="2-days">Get it in 2 Days</label>
         </div>
       </div>
       <div className="my-2">
@@ -30,31 +30,31 @@ function Sidebar() {
         <div className="font-bold">Brands</div>
         <div className="flex items-center my-2">
           <input type="radio" id="samsung" className="mx-1" name="brand" />
-          <label for="samsung">Samsung</label>
+          <label htmlFor="samsung">Samsung</label>
         </div>
         <div className="flex items-center my-2">
           <input type="radio" id="lg" className="mx-1" name="brand" />
-          <label for="lg">LG</label>
+          <label htmlFor="lg">LG</label>
         </div>
         <div className="flex items-center my-2">
           <input type="radio" id="haier" className="mx-1" name="brand" />
-          <label for="haier">Haier</label>
+          <label htmlFor="haier">Haier</label>
         </div>
         <div className="flex items-center my-2">
           <input type="radio" id="daikin" className="mx-1" name="brand" />
-          <label for="daikin">Daikin</label>
+          <label htmlFor="daikin">Daikin</label>
         </div>
         <div className="flex items-center my-2">
           <input type="radio" id="goderj" className="mx-1" name="brand" />
-          <label for="goderj">Goderj</label>
+          <label htmlFor="goderj">Goderj</label>
         </div>
         <div className="flex items-center my-2">
           <input type="radio" id="ifb" className="mx-1" name="brand" />
-          <label for="ifb">IFB</label>
+          <label htmlFor="ifb">IFB</label>
         </div>
         <div className="flex items-center my-2">
           <input type="radio" id="panasonic" className="mx-1" name="brand" />
-          <label for="panasonic">Panasonic</label>
+          <label htmlFor="panasonic">Panasonic</label>
         </div>
       </div>
     </div>
