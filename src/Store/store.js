@@ -3,6 +3,7 @@ import { authSlice } from "../Features/authSlice";
 import { productsSlice } from "../Features/ProductsSlice";
 import { productDetailsSlice } from "../Features/productDetailsSlice";
 import { categoriesSlice } from "../Features/categoriesSlice";
+import { wishlistSlice } from "../Features/wishListSlice";
 
 export default configureStore({
     reducer:{
@@ -10,5 +11,6 @@ export default configureStore({
         products:productsSlice.reducer,
         productDetails:productDetailsSlice.reducer,
         categories:categoriesSlice.reducer,
+        wishlist:wishlistSlice.reducer
     }
 })

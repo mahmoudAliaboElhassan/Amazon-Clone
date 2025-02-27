@@ -19,6 +19,7 @@ export const productsSlice = createSlice({
             state.error=null
         })
         .addCase(GetAllProductsAction.rejected , (state,action)=>{
+            console.log(action.payload,'action');
             state.error=action.payload
             state.status='rejected'
             state.loading = false
