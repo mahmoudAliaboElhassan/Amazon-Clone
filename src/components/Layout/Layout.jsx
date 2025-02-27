@@ -8,7 +8,7 @@ export default function Layout() {
     location.pathname === "/register" || location.pathname === "/login";
   return (
     <>
-      {/* {!hideNavbarAndFooter && <Navbar />} */}
+      {!hideNavbarAndFooter && <Navbar />}
       <div className="min-h-[80vh]">
         <Outlet />
       </div>
