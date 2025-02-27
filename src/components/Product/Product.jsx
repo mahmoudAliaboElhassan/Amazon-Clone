@@ -1,66 +1,87 @@
-import { GoStarFill } from "react-icons/go";
-import { FiStar } from "react-icons/fi";
+
 import { IoChevronDownOutline } from "react-icons/io5";
 import toast from "react-hot-toast";
-
-const Product = ({ product }) => {
+import StarRating from "../StarRating";
+import { GoHeart } from "react-icons/go";
+const Product = ({ product ,wishListCard,handleRemoveFromWishList,handleAddWishlist}) => {
   const addToCart = () => {
     toast.success(" added to cart !");
   };
+ 
 
   return (
-    <div className="card w-full bg-white border border-[#D9D9D9] border-[border: 1.08px solid] overflow-hidden">
+    <div className="card w-full bg-white border border-[#D9D9D9] border-[border: 1.08px solid] overflow-hidden relative group ">
+      {
+        !wishListCard && 
+        <button
+        className="absolute top-32 right-4 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-200 rounded-full p-1"
+        onClick={(e) => handleAddWishlist(e,product.id)}
+      >
+        <GoHeart className="w-6 h-6 hover:text-red-500" />
+      </button>
+      }
+      
       <figure className="p-2">
         <img
-          src={product.imageUrl}
-          alt={product.name}
-          className="w-full h-48 object-cover"
+          src={product.imageCover}
+          alt={product.title}
+          loading="lazy"
+          className="w-full h-48 object-contain"
         />
       </figure>
       <div className="card-body px-4 py-2">
         <h2 className="text-[16.18px] font-semibold text-gray-800 line-clamp-2">
-          {product.name}
+          {product.title}
         </h2>
         <div className="flex items-center text-sm mt-1">
           <span className="flex items-center">
-            <GoStarFill className=" text-yellow-400" />
-            <GoStarFill className=" text-yellow-400" />
-            <GoStarFill className=" text-yellow-400" />
-            <GoStarFill className=" text-yellow-400" />
-            <FiStar className="text-yellow-400" />
+            <StarRating rating={product.ratingsAverage} />
+  
             <IoChevronDownOutline />
           </span>
           <span className="text-[#1F8394] text-[16.65px] ml-2">
-            {product.reviews}
+            {product.ratingsQuantity}
           </span>
         </div>
         <p className="text-[#1F8394] text-[12.94px]">
-          {product.bought} in past month
+          {product.sold} in past month
         </p>
         <div className="flex flex-col items-baseline my-2 text-[#1F8394]  ">
           <span className="text-[21.57px] text-black font-[400]">
-            {product.price}
-            {product.discount && (
+            {product.price} $
+          
               <span className="text-[13.42px] font-[400] ml-2 text-[#1F8394]">
-                ({product.discount})
+                20% off
               </span>
-            )}
+          
           </span>
           <p className=" text-[12.94px] ">Save extra with No Cost EMI</p>
         </div>
         <p className="text-[12.94px] font-[300]">
           Free delivery by{" "}
-          <span className="font-[600]">{product.delivery}</span>
+          <span className="font-[600]">Sun, 15 Sept, 7:00 am - 9:00 pm</span>
         </p>
+        <div className="flex gap-4">
         <button
           onClick={() => addToCart()}
-          className="w-[99px] h-[28px] bg-[#FFCC00] hover:bg-[#ebc400] text-[11.89px] font-[300] mt-2 mb-6 rounded-[19.81px] cursor-pointer "
+          className="w-[99px] h-[32px] bg-[#FFCC00] hover:bg-[#ebc400] text-[11.89px] font-[300] mt-2 mb-6 rounded-[19.81px] cursor-pointer "
         >
           Add to cart
         </button>
+
+        {
+          wishListCard &&  
+          <button
+            onClick={()=>handleRemoveFromWishList(product.id)}
+          className="w-[140px] h-[32px] capitalize text-white bg-red-400 hover:bg-red-700 text-[11.89px] font-[300] mt-2 mb-6 rounded-[19.81px] cursor-pointer "
+          >
+          remove from wishlist
+        </button>
+        }
+
+        </div>
       </div>
     </div>
   );
 };
-
 export default Product;
