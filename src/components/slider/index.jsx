@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -19,30 +19,47 @@ import "swiper/css/autoplay";
 
 import "./customSlide.css";
 
-function Slider({ productsData }) {
-  const products = productsData?.data;
+function Slider({ products, height, navigationStyle }) {
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      const swiperInstance = swiperRef.current.swiper;
+
+      // Access the navigation buttons
+      const prevButton = swiperInstance.navigation.prevEl;
+      const nextButton = swiperInstance.navigation.nextEl;
+      if (prevButton && nextButton) {
+        console.log("prevButton", prevButton);
+        console.log("nextButton", nextButton);
+        prevButton.style.backgroundColor = "#ffffff";
+        prevButton.style.padding = "15px 25px";
+        prevButton.style.border = "2px solid #ffffff";
+        prevButton.style.color = "#000000";
+        prevButton.style.borderRadius = "2px";
+
+        nextButton.style.backgroundColor = "#ffffff";
+        nextButton.style.padding = "15px 25px";
+        nextButton.style.border = "2px solid #ffffff";
+        nextButton.style.color = "#000000";
+        nextButton.style.borderRadius = "2px";
+      }
+    }
+  }, [products]);
+
   return (
-    <div>
-      {" "}
+    <div className="relative">
       <Swiper
-        modules={[
-          Navigation,
-          Pagination,
-          Scrollbar,
-          A11y,
-          EffectFade,
-          Autoplay,
-        ]}
-        spaceBetween={0}
-        autoplay={{ delay: 3000 }}
-        slidesPerView={4}
-        navigation
-        // pagination={{ clickable: true }} // Enable pagination and make it clickable
+        ref={swiperRef}
+        modules={[Navigation, Pagination]}
+        spaceBetween={10}
+        slidesPerView={3}
         loop={true}
-        style={{ height: "350px", width: "100%" }}
+        navigation
+        style={{ height: height, width: "100%" }}
       >
-        {products?.map((product) => (
-          <SwiperSlide key={product.id}>
+        {products?.map((product, index) => (
+          <SwiperSlide key={index}>
             <img
               src={product.imageCover}
               alt={product.title}

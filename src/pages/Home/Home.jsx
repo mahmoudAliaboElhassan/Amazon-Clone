@@ -16,9 +16,36 @@ export default function Home() {
   console.log("Hello");
   return (
     <>
-      <Slider productsData={productsData} />
+      <Slider products={productsData?.data} height="350px" />
       <div style={{ backgroundColor: "#575757" }}>
-        <HomeProducts productsData={productsData} />
+        <HomeProducts productsData={productsData} paginationStyle={false} />
+        <div className="container py-[25px] px-[25px]">
+          <div className="bg-white">
+            <h2 className="font-bold text-[22px] text-black pt-3 px-4">
+              Best Sellers in Clothing & Accessories
+            </h2>
+            <Slider
+              products={productsData?.data.slice(6, 12)}
+              height="200px"
+              navigationStyle={true}
+            />
+          </div>
+        </div>
+
+        {/* products here  */}
+
+        <div className="container px-[25px]">
+          <div className="bg-white">
+            <h2 className="font-bold text-[22px] text-black pt-3 px-4">
+              Min. 50% off | Unique kitchen finds | Amazon Brands & more{" "}
+            </h2>
+            <Slider
+              products={productsData?.data.slice(12, 18)}
+              height="200px"
+              navigationStyle={true}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

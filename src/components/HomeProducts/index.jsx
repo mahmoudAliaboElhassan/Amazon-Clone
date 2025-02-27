@@ -27,7 +27,7 @@ function HomeProducts({ productsData }) {
 
   return (
     <div
-      className="container py-[25px] px-[25px]"
+      className="container px-[25px]"
       style={{ marginTop: "-6rem", position: "relative", zIndex: "999" }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
