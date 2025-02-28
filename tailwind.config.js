@@ -16,6 +16,7 @@ export default {
         navBgColor: "#131921",
         navBgSecColor: "#232F3E",
         blueLinks: "#2A8FD7",
+        cyan: "#1F8394",
       }
     },
     fontFamily: {
@@ -23,6 +24,9 @@ export default {
       'inika': ['Inika', 'serif'],
       'noto': ['Noto Serif Gujarati Variable', 'serif'],
       'lato': ['Lato', 'sans-serif'],
+      'inter': ['Inter Variable', 'sans-serif'],
+      'hind': ['Hind Vadodara', 'sans-serif'],
+      'cabin': ['Cabin Condensed', 'sans-serif'],
     }
   },
   plugins: [daisyui],
