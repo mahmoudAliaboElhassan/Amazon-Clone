@@ -3,23 +3,24 @@ import { IoChevronDownOutline } from "react-icons/io5";
 import toast from "react-hot-toast";
 import StarRating from "../StarRating";
 import { GoHeart } from "react-icons/go";
-const Product = ({ product ,wishListCard,handleRemoveFromWishList,handleAddWishlist}) => {
-  const addToCart = () => {
+import { NavLink } from "react-router";
+const Product = ({ product ,handleAddWishlist}) => {
+  const addToCart = (e) => {
+    e.preventDefault();
     toast.success(" added to cart !");
   };
  
 
   return (
-    <div className="card w-full bg-white border border-[#D9D9D9] border-[border: 1.08px solid] overflow-hidden relative group ">
-      {
-        !wishListCard && 
+    <NavLink to={`/productDetails/${product.id}`} className="card w-full bg-white border border-[#D9D9D9] border-[border: 1.08px solid] overflow-hidden relative group ">
+      
         <button
         className="absolute top-32 right-4 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-200 rounded-full p-1"
         onClick={(e) => handleAddWishlist(e,product.id)}
       >
         <GoHeart className="w-6 h-6 hover:text-red-500" />
       </button>
-      }
+     
       
       <figure className="p-2">
         <img
@@ -63,25 +64,17 @@ const Product = ({ product ,wishListCard,handleRemoveFromWishList,handleAddWishl
         </p>
         <div className="flex gap-4">
         <button
-          onClick={() => addToCart()}
+          onClick={(e) => addToCart(e)}
           className="w-[99px] h-[32px] bg-[#FFCC00] hover:bg-[#ebc400] text-[11.89px] font-[300] mt-2 mb-6 rounded-[19.81px] cursor-pointer "
         >
           Add to cart
         </button>
 
-        {
-          wishListCard &&  
-          <button
-            onClick={()=>handleRemoveFromWishList(product.id)}
-          className="w-[140px] h-[32px] capitalize text-white bg-red-400 hover:bg-red-700 text-[11.89px] font-[300] mt-2 mb-6 rounded-[19.81px] cursor-pointer "
-          >
-          remove from wishlist
-        </button>
-        }
+       
 
         </div>
       </div>
-    </div>
+    </NavLink>
   );
 };
 export default Product;

@@ -11,13 +11,13 @@ function Products() {
     const { productsData, loading } = useSelector(state => state.products)
     useEffect(() => {
         dispatch(GetAllProductsAction()).then(res => {
-            console.log(res.payload.data);
+            // console.log(res.payload.data);
         })
 
     }, [])
 
     const handleAddWishlist = (e, productId) => {
-        e.stopPropagation();
+        e.preventDefault();
         dispatch(addProductToWishListAction(productId)).then(res => {
             if (res.payload.status == "success") {
                 toast.success("product added successfully")
