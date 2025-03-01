@@ -7,7 +7,7 @@ const StarRating = ({ rating }) => {
 
   return (
     <div className="flex">
-      {/* Render stars dynamically */}
+  
       {Array.from({ length: totalStars }, (_, index) =>
         index < filledStars ? (
           <GoStarFill key={index} className="text-yellow-400" />

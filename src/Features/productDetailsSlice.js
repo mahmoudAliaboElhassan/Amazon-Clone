@@ -5,7 +5,7 @@ import { GetProductDetailsAction } from "../Network/ProductsApi";
 export const productDetailsSlice = createSlice({
     name:"productDetails",
     initialState:{
-        productDetails:null,
+        productDetailsData:null,
         loading:false,
         status:"idle",
         error:null
@@ -24,7 +24,7 @@ export const productDetailsSlice = createSlice({
             state.loading = false
         })
         .addCase(GetProductDetailsAction.fulfilled , (state,action)=>{
-            state.productDetails = action.payload
+            state.productDetailsData = action.payload.data
             state.status='success'
             state.loading = false
 
