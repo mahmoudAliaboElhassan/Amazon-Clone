@@ -1,9 +1,9 @@
 export default function Cart() {
   return (
-    <div className="bg-gray-100 px-1 flex gap-3">
+    <div className="bg-gray-100 p-5 flex flex-col md:flex-row gap-3">
       {/* Left Cart Section */}
-      <div className="bg-white p-5 w-3/4 flex flex-col ">
-        <div className="text-2xl font-bold">Shopping Cart</div>
+      <div className="bg-white p-5 w-full md:w-3/4 flex flex-col">
+        <div className="text-xl sm:text-2xl font-bold">Shopping Cart</div>
         <div className="text-blue-600 cursor-pointer">Deselect all items</div>
         <div className="text-right">Price</div>
 
@@ -11,14 +11,11 @@ export default function Cart() {
         <div className="flex flex-col w-full">
           {/* Cart Item */}
           {[1, 2, 3].map((item, index) => (
-            <div
-              key={index}
-              className="flex justify-between p-5 border-t border-gray-200"
-            >
+            <div key={index} className="flex flex-col sm:flex-row justify-between p-5 border-t border-gray-200">
               {/* Left Block */}
-              <div className="flex w-4/5">
+              <div className="flex w-full sm:w-4/5">
                 {/* Product Image */}
-                <div className="w-1/5 flex-shrink-0">
+                <div className="w-1/3 sm:w-1/5 flex-shrink-0">
                   <img
                     src="https://m.media-amazon.com/images/I/61KNJav3S9L._AC_UL480_QL65_.jpg"
                     alt="product"
@@ -28,15 +25,12 @@ export default function Cart() {
 
                 {/* Product Details */}
                 <div className="flex flex-col p-3 gap-2">
-                  <div className="text-lg">
-                    boAt Airdopes 141 Bluetooth TWS Earbuds with 42H Playtime,
-                    Low Latency Mode for Gaming, ENx Tech, IWP, IPX4 Water
-                    Resistance...
+                  <div className="text-base sm:text-lg">
+                    boAt Airdopes 141 Bluetooth TWS Earbuds with 42H Playtime, Low Latency Mode for
+                    Gaming, ENx Tech, IWP, IPX4 Water Resistance...
                   </div>
                   <div className="text-green-700 text-sm">In Stock</div>
-                  <div className="text-gray-600 text-sm">
-                    Eligible for FREE Shipping
-                  </div>
+                  <div className="text-gray-600 text-sm">Eligible for FREE Shipping</div>
                   <div className="w-16">
                     <img
                       src="https://m.media-amazon.com/images/G/31/marketing/fba/fba-badge_18px._CB485936079_.png"
@@ -51,14 +45,14 @@ export default function Cart() {
               </div>
 
               {/* Right Block (Price) */}
-              <div className="text-lg font-semibold">Rs 25000</div>
+              <div className="text-lg font-semibold mt-3 sm:mt-0">Rs 25000</div>
             </div>
           ))}
         </div>
       </div>
 
       {/* Right Cart Section */}
-      <div className="bg-white p-5 w-1/4 flex flex-col h-fit">
+      <div className="bg-white p-5 w-full md:w-1/4 flex flex-col h-fit">
         <div className="text-lg font-medium">
           Subtotal (3 items): <span className="font-bold">Rs 75000</span>
         </div>

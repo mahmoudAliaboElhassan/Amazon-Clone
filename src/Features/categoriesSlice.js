@@ -24,7 +24,8 @@ export const categoriesSlice= createSlice({
             state.loading = false
         })
         .addCase(GetCategoriesAction.fulfilled , (state,action)=>{
-            state.categoriesData = action.payload
+            console.log(action.payload);
+            state.categoriesData = action.payload.data
             state.status='success'
             state.loading = false
 
