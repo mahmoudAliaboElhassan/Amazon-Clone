@@ -1,9 +1,8 @@
 import axios from "axios";
 
-
-const apiUrl = "https://ecommerce.routemisr.com/api/v1/"
+const apiUrl = process.env.REACT_APP_API_URL;
 const axiosClient = axios.create({
-    baseURL:apiUrl
-})
+  baseURL: apiUrl,
+});
 
-export default axiosClient
+export default axiosClient;
