@@ -22,7 +22,7 @@ export default function Login() {
             if (res?.payload?.message == "success") {
                 // localStorage.setItem("userToken", res?.payload?.token)
                 toast.success("Loged in successfully")
-                navigate('/')
+                navigate('/products')
             }
             else if (res?.error?.message == "Rejected") {
                 toast.error(res?.payload)

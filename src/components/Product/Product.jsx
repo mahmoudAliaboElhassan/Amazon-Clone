@@ -4,13 +4,26 @@ import toast from "react-hot-toast";
 import StarRating from "../StarRating";
 import { GoHeart } from "react-icons/go";
 import { NavLink } from "react-router";
+import { useDispatch } from "react-redux";
+import { addProductToCartAction } from "../../Network/CartApi";
 const Product = ({ product ,handleAddWishlist}) => {
+  const dispatch = useDispatch()
+  
   const addToCart = (e) => {
     e.preventDefault();
-    toast.success(" added to cart !");
+   
+
+    dispatch(addProductToCartAction(product.id)).then(res=>{
+      if(res.payload.status=="success"){
+        toast.success("products Added to cart")
+      }
+      else if (res?.error?.message == "Rejected") {
+          toast.error(res?.payload)
+      }
+    })
   };
  
-
+ 
   return (
     <NavLink to={`/productDetails/${product.id}`} className="card w-full bg-white border border-[#D9D9D9] border-[border: 1.08px solid] overflow-hidden relative group ">
       
