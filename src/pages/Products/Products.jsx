@@ -27,6 +27,8 @@ function Products() {
             }
         })
     }
+
+    
     return (
         <div className="flex flex-col md:flex-row p-4 relative">
             <Sidebar className="w-full md:w-1/6" />

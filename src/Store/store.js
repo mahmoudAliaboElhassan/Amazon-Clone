@@ -4,6 +4,7 @@ import { productsSlice } from "../Features/ProductsSlice";
 import { productDetailsSlice } from "../Features/productDetailsSlice";
 import { categoriesSlice } from "../Features/categoriesSlice";
 import { wishlistSlice } from "../Features/wishListSlice";
+import { CartSlice } from "../Features/CartSlice";
 
 export default configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export default configureStore({
     productDetails: productDetailsSlice.reducer,
     categories: categoriesSlice.reducer,
     wishlist: wishlistSlice.reducer,
+    cart:CartSlice.reducer,
   },
 });

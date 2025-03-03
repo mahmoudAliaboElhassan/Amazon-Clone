@@ -12,6 +12,9 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { GetProductDetailsAction } from "../../Network/ProductsApi"
 import StarRating from "../../components/StarRating"
+import { addProductToWishListAction } from "../../Network/WishListApi"
+import { toast } from "react-hot-toast"
+import { addProductToCartAction } from "../../Network/CartApi"
 
 export default function ProductDetails() {
     const {productDetailsData,loading} = useSelector(state=> state.productDetails)
@@ -19,7 +22,8 @@ export default function ProductDetails() {
     const [coverImg,setCoverImg] = useState()
     const [activeIndex, setActiveIndex] = useState(0);
     const dispatch = useDispatch()
-
+  
+   
     useEffect(()=>{
         console.log(id);
         dispatch(GetProductDetailsAction(id)).then(res=>{
@@ -33,6 +37,28 @@ export default function ProductDetails() {
             setCoverImg(img);
             setActiveIndex(index);
     }
+
+    const handleAddToWishlist = ()=>{
+        dispatch(addProductToWishListAction(id)).then(res=>{
+            if(res.payload.status=="success"){
+                toast.success("products Added successfully")
+            }
+            else if (res?.error?.message == "Rejected") {
+                toast.error(res?.payload)
+            }
+        })
+    }
+    const addToCart = (e) => {
+        e.preventDefault();
+        dispatch(addProductToCartAction(id)).then(res=>{
+            if(res.payload.status=="success"){
+                toast.success("products Added to cart")
+              }
+              else if (res?.error?.message == "Rejected") {
+                  toast.error(res?.payload)
+              }
+        })
+      };
     return (
         <>
         {
@@ -123,7 +149,7 @@ export default function ProductDetails() {
                                 <span>Quantity: 1</span>
                                 <i className="fa-solid fa-chevron-down text-[#787878]"></i>
                             </button>
-                            <button className="py-[6.4px] w-full bg-mainYellow hover:bg-[#ebc400] rounded-[18.3px]">Add to Cart</button>
+                            <button onClick={addToCart} className="py-[6.4px] w-full bg-mainYellow hover:bg-[#ebc400] rounded-[18.3px]">Add to Cart</button>
                             <button className="py-[6.4px] w-full bg-[#FFA41C] hover:bg-[#ec8e00] rounded-[18.3px]">Buy Now</button>
                             <div className="flex justify-between">
                                 <div className="flex flex-col gap-[8px]">
@@ -138,7 +164,7 @@ export default function ProductDetails() {
                                 </div>
                             </div>
                             <div className="w-full h-[1.38px] bg-[#D9D9D9]"></div>
-                            <button className="rounded-[9px] border border-solid border-black text-start py-[6.3px] px-[9.85px]">Add to Wish List</button>
+                            <button onClick={handleAddToWishlist} className="rounded-[9px] border border-solid border-black text-start py-[6.3px] px-[9.85px]">Add to Wish List</button>
                         </div>
                     </div>
                 </div>

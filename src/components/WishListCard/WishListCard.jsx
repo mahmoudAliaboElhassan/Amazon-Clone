@@ -1,17 +1,27 @@
 import React from 'react'
 import { IoChevronDownOutline } from "react-icons/io5";
 import StarRating from "../StarRating";
-import { GoHeart } from "react-icons/go";
 import { toast } from 'react-hot-toast';
-import { NavLink } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { addProductToCartAction } from '../../Network/CartApi';
+import { Link } from 'react-router-dom';
 
 function WishListCard({ product ,handleRemoveFromWishList,handleAddWishlist}) {
-    const addToCart = (e) => {
-        e.preventDefault();
-        toast.success(" added to cart !");
-      };
+  const dispatch = useDispatch()
+
+  const addToCart = (e) => {
+    e.preventDefault();
+    dispatch(addProductToCartAction(product.id)).then(res=>{
+        if(res.payload.status=="success"){
+            toast.success("products Added to cart")
+          }
+          else if (res?.error?.message == "Rejected") {
+              toast.error(res?.payload)
+          }
+    })
+  };
   return (
-    <NavLink to={`/productDetails/${product.id}`} className="card w-full bg-white border border-[#D9D9D9] border-[border: 1.08px solid] overflow-hidden relative group ">
+    <Link to={`/productDetails/${product.id}`} className="card w-full bg-white border border-[#D9D9D9] border-[border: 1.08px solid] overflow-hidden relative group ">
    
  
     
@@ -57,7 +67,7 @@ function WishListCard({ product ,handleRemoveFromWishList,handleAddWishlist}) {
       </p>
       <div className="flex gap-4">
       <button
-        onClick={(e) => addToCart(e)}
+        onClick={addToCart}
         className="w-[99px] h-[32px] bg-[#FFCC00] hover:bg-[#ebc400] text-[11.89px] font-[300] mt-2 mb-6 rounded-[19.81px] cursor-pointer "
       >
         Add to cart
@@ -74,7 +84,7 @@ function WishListCard({ product ,handleRemoveFromWishList,handleAddWishlist}) {
 
       </div>
     </div>
-  </NavLink>
+  </Link>
   )
 }
 
