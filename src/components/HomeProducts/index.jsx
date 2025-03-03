@@ -1,7 +1,7 @@
 import React from "react";
 
 function HomeProducts({ productsData }) {
-  const products = productsData?.data.slice(0, 6);
+  const products = productsData?.data?.slice(0, 6);
   console.log(products);
 
   // Function to generate random text for each product

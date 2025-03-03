@@ -30,7 +30,7 @@ export default function Home() {
               Best Sellers in Clothing & Accessories
             </h2>
             <Slider
-              products={productsData?.data.slice(6, 12)}
+              products={productsData?.data?.slice(6, 12)}
               height="200px"
               navigationStyle={true}
             />
@@ -43,7 +43,7 @@ export default function Home() {
               Min. 50% off | Unique kitchen finds | Amazon Brands & more{" "}
             </h2>
             <Slider
-              products={productsData?.data.slice(12, 18)}
+              products={productsData?.data?.slice(12, 18)}
               height="200px"
               navigationStyle={true}
             />
