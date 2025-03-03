@@ -13,6 +13,6 @@ export default configureStore({
     productDetails: productDetailsSlice.reducer,
     categories: categoriesSlice.reducer,
     wishlist: wishlistSlice.reducer,
-    cart:CartSlice.reducer,
+    cart: CartSlice.reducer,
   },
 });
