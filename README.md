@@ -1,5 +1,4 @@
-```markdown
-# Amazon Clone
+ # Amazon Clone
 
 An Amazon-inspired e-commerce platform built with modern web technologies, featuring product listings, a shopping cart, user authentication, and a responsive design.
 
@@ -38,9 +37,9 @@ Contributed as part of a team to design and develop the platform, collaborating 
    ```
 
 4. Open your browser and navigate to:
-   ```
-http://localhost:5173  
-   ```
+   ```bash
+    http://localhost:5173  
+    ```
 
 ## 📸 Live Demo
 
@@ -57,4 +56,4 @@ We welcome contributions! Feel free to fork the repo and submit a pull request.
 ---
 
 Made with ❤️ by the team
-```
+ 
