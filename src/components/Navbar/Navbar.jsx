@@ -1,6 +1,6 @@
 import amazonLogo from "../../assets/images/Amazon.png";
 import loc from "../../assets/images/loc.png";
-import india2 from "../../assets/images/India2.png";
+import Egypt from "../../assets/images/Flag_of_Egypt.svg.webp";
 import cart from "../../assets/images/cart.png";
 import { NavLink } from "react-router-dom";
 
@@ -41,9 +41,13 @@ export default function Navbar() {
               </button>
             </div>
             <div className=" gap-3 hidden lg:flex">
-              <img src={india2} alt="india flag" />
+              <img
+                src={Egypt}
+                className="w-[20px] h-[20px]"
+                alt="Egyptian flag"
+              />
               <span className="cursor-pointer flex gap-1">
-                EN <i className="fa-solid fa-sort-down text-[#C0CCCC]"></i>
+                Eg <i className="fa-solid fa-sort-down text-[#C0CCCC]"></i>
               </span>
             </div>
             <NavLink
@@ -64,8 +68,13 @@ export default function Navbar() {
               <span className="self-end">Cart</span>
             </NavLink>
             <div className="dropdown dropdown-end lg:hidden">
-              <div tabIndex={0} role="button" className="text-[25px] px-[10px]"><i className="fa-solid fa-bars"></i></div>
-              <ul tabIndex={0} className="dropdown-content menu bg-navBgColor rounded-box z-[1] w-52 p-2 shadow">
+              <div tabIndex={0} role="button" className="text-[25px] px-[10px]">
+                <i className="fa-solid fa-bars"></i>
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu bg-navBgColor rounded-box z-[1] w-52 p-2 shadow"
+              >
                 <li>
                   <NavLink to={"/wishlist"} className="cursor-pointer flex">
                     <span className="font-[400]">Wish List</span>
@@ -76,16 +85,17 @@ export default function Navbar() {
                     <span className="self-end">Cart</span>
                   </NavLink>
                 </li>
-                <li><NavLink
-                  className=" items-center gap-1 group cursor-pointer flex"
-                  to={"/login"}
-                  onClick={() => {
-                    localStorage.removeItem("token");
-                  }}
-                >
-                  <span className="">Log Out</span>
-                  <i className="fa-solid fa-arrow-right-from-bracket group-hover:translate-x-[7px] transition-transform"></i>
-                </NavLink>
+                <li>
+                  <NavLink
+                    className=" items-center gap-1 group cursor-pointer flex"
+                    to={"/login"}
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                    }}
+                  >
+                    <span className="">Log Out</span>
+                    <i className="fa-solid fa-arrow-right-from-bracket group-hover:translate-x-[7px] transition-transform"></i>
+                  </NavLink>
                 </li>
               </ul>
             </div>

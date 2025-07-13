@@ -1,5 +1,5 @@
 import amazon from "../../assets/images/Amazon.png";
-import india from "../../assets/images/India.png";
+import Egypt from "../../assets/images/Flag_of_Egypt.svg.webp";
 
 export default function Footer() {
   return (
@@ -183,8 +183,12 @@ export default function Footer() {
                 </select>
               </div>
               <div className="flex items-center border border-solid border-[#B4B4B4] rounded-[3px] p-[10px] gap-[10px] w-fit">
-                <img src={india} alt="india flag logo" />
-                <span className="text-[#B4B4B4]">India</span>
+                <img
+                  src={Egypt}
+                  className="w-[20px] h-[20px]"
+                  alt="Egyptian flag"
+                />
+                <span className="text-[#B4B4B4]">Eg</span>
               </div>
             </div>
           </div>
