@@ -1,4 +1,4 @@
- # Amazon Clone
+# Amazon Clone
 
 An Amazon-inspired e-commerce platform built with modern web technologies, featuring product listings, a shopping cart, user authentication, and a responsive design.
 
@@ -21,25 +21,28 @@ Contributed as part of a team to design and develop the platform, collaborating 
 ## 📂 Project Setup
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/mahmoudAliaboElhassan/Amazon-Clone/
    cd amazon-clone
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Run the development server:
+
    ```bash
    npm run dev
    ```
 
 4. Open your browser and navigate to:
    ```bash
-    http://localhost:5173  
-    ```
+    http://localhost:5173
+   ```
 
 ## 📸 Live Demo
 
@@ -56,4 +59,3 @@ We welcome contributions! Feel free to fork the repo and submit a pull request.
 ---
 
 Made with ❤️ by the team
- 
